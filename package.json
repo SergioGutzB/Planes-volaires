@@ -2,28 +2,66 @@
   "name": "planes-volaires",
   "version": "1.0.0",
   "description": "Planes volaires",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Sergio Gutierrez",
   "license": "ISC",
+  "scripts": {
+    "predeploy": "webpack -p --config=webpack/webpack.prod.js",
+    "deploy": "surge --project dist --domain https://planes-volaires.surge.sh",
+    "start": "webpack-dashboard -- webpack-dev-server --config=webpack/webpack.dev.js",
+    "test": "jest"
+  },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-react": "^6.22.0",
+    "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.4.5",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "html-webpack-plugin": "^2.28.0",
+    "jest": "^18.1.0",
     "node-sass": "^4.5.0",
-    "postcss-loader": "^1.2.2",
-    "sass-loader": "^5.0.1",
-    "webpack": "^2.2.1",
+    "normalize.css": "^5.0.0",
+    "offline-plugin": "^4.6.1",
+    "preact": "^7.2.0",
+    "preact-compat": "^3.13.1",
+    "sass-loader": "^6.0.0",
+    "standard": "^8.6.0",
+    "standard-loader": "^5.0.0",
+    "style-loader": "^0.13.1",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony",
+    "uglifyjs-webpack-plugin": "^0.1.4",
+    "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "4.0.0-beta.5",
+    "react-router-dom": "next",
+    "surge": "^0.18.0",
+    "webpack": "^2.2.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/components/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   }
 }

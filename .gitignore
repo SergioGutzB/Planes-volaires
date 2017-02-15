@@ -38,3 +38,7 @@ jspm_packages
 
 # Configuration VScode
 .vscode
+
+.DS_Store
+
+dist
