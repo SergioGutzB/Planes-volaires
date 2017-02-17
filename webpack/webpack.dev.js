@@ -1,7 +1,6 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
-  // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const srcDir = resolve(__dirname, '../src')
 
@@ -13,6 +12,9 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [{
@@ -27,31 +29,28 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: [{
-        loader: "style-loader"
+        loader: 'style-loader'
       }, {
-        loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]"
+        loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:6]'
       }, ]
     }, {
-      test: /\.scss$/,
+      test: /\.(scss)$/,
       use: [{
-        loader: "style-loader"
+        loader: 'style-loader'
       }, {
-        loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]"
+        loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:6]'
       }, {
-        loader: "sass-loader"
+        loader: 'resolve-url-loader'
+      }, {
+        loader: 'sass-loader'
       }]
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loader: 'url-loader'
+    }, {
+      test: /\.json$/,
+      loader: 'json'
     }]
-  },
-
-  resolve: {
-    modulesDirectories: ['node_modules', 'components']
-  },
-
-  resolve: {
-    alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
   },
   plugins: [
     new HtmlWebpackPlugin({

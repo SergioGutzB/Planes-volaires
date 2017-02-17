@@ -2,7 +2,7 @@
   "plugins": ["transform-react-jsx"],
   "env": {
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs", "react-css-modules"]
+      "plugins": ["transform-es2015-modules-commonjs", "react", "react-css-modules"]
     }
   }
 }
