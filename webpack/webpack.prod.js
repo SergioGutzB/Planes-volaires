@@ -7,8 +7,8 @@ const OfflinePlugin = require('offline-plugin')
 const webpack = require('webpack')
 
 const extractSass = new ExtractTextPlugin({
-  filename: "[name].[contenthash].css",
-  disable: process.env.NODE_ENV === "development"
+  filename: '[name].[contenthash].css',
+  disable: process.env.NODE_ENV === 'development'
 });
 
 
@@ -34,30 +34,38 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]',
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]',
+          options: {
+            sourceMap: true
+          }
+        }]
       }),
     }, {
       test: /\.scss$/,
       loader: extractSass.extract({
-        fallback: "style-loader",
+        fallback: 'style-loader',
         use: [{
-          loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]",
-          options: {
-            sourceMap: true
-          }
+          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]'
         }, {
-          loader: "sass-loader",
+          loader: 'sass-loader',
           options: {
             sourceMap: true
           }
-        }]        
+        }]
       })
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loader: 'url-loader'
+    }, {
+      test: /\.json$/,
+      loader: 'json'
     }]
   },
   devtool: 'source-map',
   performance: {
-    hints: "error"
+    hints: 'error'
   },
   // resolve: {
   //   alias: {

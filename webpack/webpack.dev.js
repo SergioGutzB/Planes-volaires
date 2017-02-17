@@ -34,7 +34,7 @@ module.exports = {
         loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:6]'
       }, ]
     }, {
-      test: /\.scss$/,
+      test: /\.(scss)$/,
       use: [{
         loader: 'style-loader'
       }, {

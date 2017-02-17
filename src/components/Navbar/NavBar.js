@@ -5,21 +5,21 @@ let styles = require('./Navbar.scss')
 let imgLogoPng = require('../../assets/logo.png')
 // let imgLogoSvg = require('../../assets/logo.svg')
 
-export default class Example extends React.Component {
-  constructor(props) {
-    super(props)
+export default class NavBar extends React.Component {
+  constructor () {
+    super()
 
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
     }
   }
-  toggle() {
+  toggle () {
     this.setState({
       isOpen: !this.state.isOpen
     })
   }
-  render() {
+  render () {
     return (
       <div className={styles.container}>
         <Col md={{ size: 10, offset: 1 }} className={styles.nopadding}>
