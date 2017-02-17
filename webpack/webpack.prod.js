@@ -40,8 +40,8 @@ module.exports = {
     }, {
       test: /\.scss$/,
       loader: extractSass.extract({
-        fallbackLoader: "style-loader",
-        loader: [{
+        fallback: "style-loader",
+        use: [{
           loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:6]",
           options: {
             sourceMap: true
@@ -59,12 +59,12 @@ module.exports = {
   performance: {
     hints: "error"
   },
-  resolve: {
-    alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //     react: 'preact-compat',
+  //     'react-dom': 'preact-compat'
+  //   }
+  // },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
       root: resolve(__dirname, '..')

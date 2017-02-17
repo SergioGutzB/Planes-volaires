@@ -1,0 +1,123 @@
+@import '../../styles/variables.scss';
+@media only screen and (min-width: 1px) {
+  .nopadding {
+    padding: 0px;
+  }
+  .container {
+    composes: nopadding;
+    border-bottom: 1px solid #E2E2E2;
+    background: #fff;
+  }
+  .navbar {
+    composes: nopadding;
+    margin-bottom: 0px;
+    box-shadow: none;
+    color: #000;
+    border: 0px;
+    &__brand {
+      padding: 10px 0px;
+      margin: 0px;
+      height: 56px;
+      img {
+        width: 200px;
+      }
+      img:hover {
+        opacity: 0.7;
+      }
+    }
+    &__nav {
+      background: #fff;
+      padding-left: 12px;
+      &__item {
+        padding-left: 7px;
+        padding-right: 7px;
+        a {
+          // font-family: Larsseit-Light;
+          font-size: 15px;
+          color: $v-dark-gray-second !important;
+          font-weight: 400;
+          padding-top: 13px;
+          &:hover,
+          &.active {
+            color: $v-blue  !important;
+        a:hover {
+          color: $v-blue !important;
+        }
+          }
+          &.active {
+            font-family: Larsseit-Med;
+          }
+        }
+      }
+    }
+  }
+  .login {
+    font-family: Larsseit-Med;
+    // color: $v-blue;
+    padding: 5px 2px 2px 5px;
+    margin-top: 15px;
+    font-size: 15px;
+    img {
+      width: 14px;
+      margin-bottom: -3px;
+    }
+    .img__user {
+      width: 30px;
+      border-radius: 20px;
+      margin-top: -7px;
+      margin-right: 5px;
+    }
+  }
+  .divider__vertical {
+    border-right: 1px solid $volaires-blue;
+    border-left: 1px solid $volaires-blue;
+    margin: 15px 0px;
+    height: 17px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .navbar {
+    &__nav {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .navbar {
+    &__nav {
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .divider__vertical {
+    display: none;
+  }
+  .navbar {
+    &__brand {
+      img {
+        padding-left: 20px;
+      }
+    }
+    &__toogler {
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1081px) {
+  .navbar {
+    &__nav {
+      margin-left: 40px;      
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 810px) {
+}
